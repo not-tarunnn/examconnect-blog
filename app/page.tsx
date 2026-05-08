@@ -26,7 +26,7 @@ export default async function HomePage() {
             <Link
               key={post._id}
               href={`/blog/${post.slug.current}`}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-zinc-900 transition hover:-translate-y-2"
+              className="group overflow-hidden rounded-3xl border border-border bg-card transition hover:-translate-y-2"
             >
               <div className="relative h-60 overflow-hidden">
                 <Image
@@ -38,13 +38,13 @@ export default async function HomePage() {
               </div>
 
               <div className="p-6">
-                <div className="mb-3 inline-block rounded-full bg-blue-500/10 px-3 py-1 text-sm text-blue-400">
+                <div className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
                   {post.category}
                 </div>
 
                 <h3 className="text-2xl font-bold">{post.title}</h3>
 
-                <p className="mt-3 line-clamp-3 text-zinc-400">
+                <p className="mt-3 line-clamp-3 text-muted-foreground">
                   {post.excerpt}
                 </p>
               </div>

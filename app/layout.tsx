@@ -1,6 +1,7 @@
 import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import ThemeProvider from '@/components/theme-provider'
 
 import type { Metadata } from 'next'
 import { Analytics } from "@vercel/analytics/react";
@@ -22,13 +23,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className="bg-black text-white antialiased">
-        <Header />
-        {children}
-        <Analytics />
-        <SpeedInsights />
-        <Footer />
+    <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning>
+      <body className="bg-background text-foreground antialiased">
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Analytics />
+          <SpeedInsights />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
