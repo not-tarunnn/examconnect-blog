@@ -1,41 +1,35 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 
+import type { Metadata } from 'next'
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  title: "ExamConnect Blog",
-  description: "JEE & NEET Updates, Preparation Tips, Exam News",
-};
+  title: 'ExamConnect',
+  description:
+    'JEE, NEET & UPSC preparation platform with notes, exam updates, PYQs, strategy guides and daily practice.',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
+      <body className="bg-black text-white antialiased">
+        <Header />
         {children}
-
         <Analytics />
         <SpeedInsights />
+        <Footer />
       </body>
     </html>
-  );
+  )
 }
