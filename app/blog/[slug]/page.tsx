@@ -49,28 +49,19 @@ export async function generateMetadata({
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://examconnect.in'}/blog/${slug}`
   const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : ''
 
-  return {
+return {
+  title: post.title,
+  description: post.excerpt,
+  openGraph: {
     title: post.title,
-    description: post.excerpt || 'Read this article on ExamConnect',
-    keywords: post.category?.title ? [post.category.title, 'exam preparation', 'study guide'] : ['exam preparation', 'study guide'],
-    authors: post.author ? [{ name: post.author.name }] : [],
-    openGraph: {
-      type: 'article',
-      url: postUrl,
-      title: post.title,
-      description: post.excerpt || '',
-      images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630 }] : [],
-      publishedTime: post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined,
-      authors: post.author ? [post.author.name] : [],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt || '',
-      images: imageUrl ? [imageUrl] : [],
-    },
+    description: post.excerpt,
+    url: postUrl,
+    images: imageUrl ? [imageUrl] : [],
+  },
+  alternates: {
     canonical: postUrl,
-  }
+  },
+}
 }
 
 const portableTextComponents = {
@@ -203,16 +194,16 @@ export default async function BlogPost({
       <article className="mx-auto max-w-7xl px-4 py-12">
         {/* Featured Image - Full Width Top */}
         {post.mainImage && (
-          <div className="mb-8 -mx-4 h-80 w-screen overflow-hidden md:h-96 md:rounded-lg md:mx-0 md:w-full">
-            <Image
-              src={urlFor(post.mainImage).width(1200).height(600).url()}
-              alt={post.mainImage.alt || post.title}
-              width={1200}
-              height={600}
-              className="h-full w-full object-cover"
-              priority
-            />
-          </div>
+          <div className="mb-8 overflow-hidden rounded-lg">
+  <Image
+    src={urlFor(post.mainImage).url()}
+    alt={post.mainImage.alt || post.title}
+    width={1200}
+    height={800}
+    className="w-full h-auto object-contain"
+    priority
+  />
+</div>
         )}
 
         {/* Two Column Layout */}
