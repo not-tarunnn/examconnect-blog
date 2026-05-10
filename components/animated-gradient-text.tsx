@@ -7,8 +7,8 @@ export default function AnimatedGradientText() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHue((prev) => (prev + 2) % 360)
-    }, 50)
+      setHue((prev) => (prev + 1) % 360)
+    }, 80)
     return () => clearInterval(interval)
   }, [])
 
@@ -16,7 +16,7 @@ export default function AnimatedGradientText() {
     <span
       className="bg-clip-text text-transparent"
       style={{
-        backgroundImage: `linear-gradient(135deg, hsl(${hue}, 100%, 50%), hsl(${(hue + 120) % 360}, 100%, 50%), hsl(${(hue + 240) % 360}, 100%, 50%))`,
+        backgroundImage: `linear-gradient(135deg, hsl(${hue}, 60%, 55%), hsl(${(hue + 120) % 360}, 55%, 60%), hsl(${(hue + 240) % 360}, 65%, 50%))`,
       }}
     >
       EXAMCONNECT

@@ -17,9 +17,9 @@ export default function Newsletter() {
   }
 
   return (
-    <div className="rounded-3xl border border-border/50 bg-gradient-to-br from-primary/5 to-accent/5 p-8 md:p-10 backdrop-blur-sm hover:border-border transition-all duration-300">
+    <div className="rounded-3xl border border-border/50 bg-linear-to-br from-primary/5 to-accent/5 p-8 md:p-10 backdrop-blur-sm hover:border-border transition-all duration-300">
       <div className="mb-6 flex items-start gap-4">
-        <div className="rounded-full bg-primary/15 p-4 flex-shrink-0">
+        <div className="rounded-full bg-primary/15 p-4 shrink-0">
           <MdMail className="h-6 w-6 text-primary" />
         </div>
         <div>

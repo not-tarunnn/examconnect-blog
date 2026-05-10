@@ -6,7 +6,15 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 
 async function getPosts() {
-  return client.fetch(`*[_type == "post"] | order(_createdAt desc)[0...6]`)
+  return client.fetch(`*[_type == "post"] | order(publishedAt desc)[0...6] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    "category": categories[0]->{ title },
+    mainImage,
+  }`)
 }
 
 export default async function HomePage() {
@@ -30,17 +38,19 @@ export default async function HomePage() {
             >
               <div className="relative h-60 overflow-hidden">
                 <Image
-                  src={urlFor(post.coverImage).url()}
-                  alt={post.title}
+                  src={urlFor(post.mainImage).url()}
+                  alt={post.mainImage?.alt || post.title}
                   fill
                   className="object-cover transition duration-500 group-hover:scale-110"
                 />
               </div>
 
               <div className="p-6">
-                <div className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
-                  {post.category}
-                </div>
+                {post.category && (
+                  <div className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
+                    {post.category.title}
+                  </div>
+                )}
 
                 <h3 className="text-2xl font-bold">{post.title}</h3>
 

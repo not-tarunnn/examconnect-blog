@@ -16,11 +16,11 @@ export default function Hero() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground backdrop-blur-sm opacity-90">
           Notes, PYQs, exam updates, strategy blogs, revision plans and daily practice for aspirants.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4 backdrop-blur-md opacity-85">
           <Button size="lg">Explore Blogs</Button>
           <Button variant="outline" size="lg">
             Start Learning
