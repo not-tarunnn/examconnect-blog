@@ -73,13 +73,14 @@ const portableTextComponents = {
       return (
         <figure className="my-8">
           <Image
-            src={urlFor(value).url()}
-            alt={value.alt || 'Blog image'}
-            width={800}
-            height={500}
-            className="w-full rounded-lg"
-            priority={false}
-          />
+  src={urlFor(value).auto('format').quality(85).url()}
+  alt={value.alt || 'Blog image'}
+  width={1200}
+  height={800}
+  sizes="(max-width: 768px) 100vw, 800px"
+  className="w-full h-auto rounded-2xl"
+  loading="lazy"
+/>
           {value.alt && (
             <figcaption className="mt-2 text-center text-sm text-zinc-500">
               {value.alt}
@@ -260,15 +261,20 @@ export default async function BlogPost({
             <TableOfContents />
 
             {/* Article Content */}
-            <div className="article-content">
-              <PortableText value={post.body} components={portableTextComponents} />
-            </div>
+            <div className="prose prose-lg dark:prose-invert max-w-3xl prose-headings:font-bold prose-img:rounded-2xl prose-a:text-primary hover:prose-a:opacity-80">
+  <PortableText
+    value={post.body}
+    components={portableTextComponents}
+  />
+</div>
           </div>
 
           {/* Right Sidebar */}
           <div className="space-y-6">
             {/* Social Share */}
-            <SocialShare title={post.title} url={postUrl} />
+            <div className="hidden md:block">
+  <SocialShare title={post.title} url={postUrl} />
+</div>
 
             {/* Advertisement */}
             <AdSidebar />
