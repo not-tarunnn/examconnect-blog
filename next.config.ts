@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/news-sitemap.xml",
+        destination: "/news-sitemap",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

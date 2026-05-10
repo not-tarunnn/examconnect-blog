@@ -1,19 +1,28 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
+import { client } from '@/sanity/lib/client'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await client.fetch(`
+    *[_type == "post"]{
+      "slug": slug.current,
+      _updatedAt
+    }
+  `)
+
+  const postUrls = posts.map((post: any) => ({
+    url: `https://blog.examconnect.co.in/blog/${post.slug}`,
+    lastModified: new Date(post._updatedAt),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
+
   return [
     {
-      url: "https://blog.examconnect.co.in",
+      url: 'https://blog.examconnect.co.in',
       lastModified: new Date(),
-      changeFrequency: "daily",
       priority: 1,
     },
 
-    {
-      url: "https://blog.examconnect.co.in/blog",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-  ];
+    ...postUrls,
+  ]
 }

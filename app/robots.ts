@@ -1,11 +1,13 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
+      userAgent: '*',
+      allow: '/',
+      disallow: '/studio/',
     },
-    sitemap: "https://blog.examconnect.co.in/sitemap.xml",
-  };
+
+    sitemap: 'https://blog.examconnect.co.in/sitemap.xml',
+  }
 }
