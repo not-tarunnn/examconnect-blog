@@ -46,7 +46,7 @@ export async function generateMetadata({
     }
   }
 
-  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://examconnect.in'}/blog/${slug}`
+  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.examconnect.co.in'}/blog/${slug}`
   const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : ''
 
 return {
