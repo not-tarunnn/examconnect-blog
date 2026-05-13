@@ -8,7 +8,7 @@ export default function AdSidebar() {
         </p>
         <div className="bg-muted rounded-lg h-60 md:h-80 flex items-center justify-center">
           <div className="text-center">
-            <p className="text-sm text-foreground/60 font-medium">Ad Space</p>
+            <p className="text-sm text-foreground/60 font-medium">loading...</p>
             <p className="text-xs text-foreground/40 mt-2">300x600 or 300x250</p>
           </div>
         </div>
@@ -21,7 +21,7 @@ export default function AdSidebar() {
         </p>
         <div className="bg-muted rounded-lg h-60 flex items-center justify-center">
           <div className="text-center">
-            <p className="text-sm text-foreground/60 font-medium">Ad Space</p>
+            <p className="text-sm text-foreground/60 font-medium">loading...</p>
             <p className="text-xs text-foreground/40 mt-2">300x250</p>
           </div>
         </div>
