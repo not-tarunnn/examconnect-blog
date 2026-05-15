@@ -53,6 +53,8 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           {children}
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676209672905473"
+     crossOrigin="anonymous"></script>
           <Footer />
         </ThemeProvider>
       </body>

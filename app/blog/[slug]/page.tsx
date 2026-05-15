@@ -277,7 +277,7 @@ export default async function BlogPost({
 </div>
 
             {/* Advertisement */}
-            <AdSidebar />
+            {/* <AdSidebar /> */}
           </div>
         </div>
       </article>

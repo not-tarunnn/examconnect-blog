@@ -62,7 +62,7 @@ export default async function HomePage() {
           ))}
         </div>
 
-        <AdBanner />
+        {/* <AdBanner /> */}
       </section>
     </main>
   )
