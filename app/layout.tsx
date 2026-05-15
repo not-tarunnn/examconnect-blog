@@ -17,7 +17,15 @@ export const metadata: Metadata = {
   title: 'ExamConnect',
   description:
     'JEE, NEET & UPSC preparation platform with notes, exam updates, PYQs, strategy guides and daily practice.',
-}
+
+  verification: {
+    google: "YOUR_GOOGLE_VERIFICATION_CODE"
+  },
+
+  other: {
+    'google-adsense-account': 'ca-pub-6676209672905473',
+  },
+};
 
 export default function RootLayout({
   children,
