@@ -29,14 +29,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={cn("font-sans", geist.variable)}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={cn("font-sans", geist.variable)} suppressHydrationWarning>
+      
+      <body className="bg-background text-foreground antialiased">
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
 
-         <head>
-
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RZMB0EDDN6"
           strategy="afterInteractive"
@@ -46,21 +48,18 @@ export default function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-
             gtag('js', new Date());
             gtag('config', 'G-RZMB0EDDN6');
           `}
         </Script>
 
-      </head>
-      <body className="bg-background text-foreground antialiased">
-        <ThemeProvider>
-          <Header />
-          {children}
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676209672905473"
-     crossOrigin="anonymous"></script>
-          <Footer />
-        </ThemeProvider>
+        {/* AdSense script (IMPORTANT: only once, here is correct) */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6676209672905473"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
