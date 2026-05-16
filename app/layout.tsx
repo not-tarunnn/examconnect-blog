@@ -18,10 +18,6 @@ export const metadata: Metadata = {
   description:
     'JEE, NEET & UPSC preparation platform with notes, exam updates, PYQs, strategy guides and daily practice.',
 
-  verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE"
-  },
-
   other: {
     'google-adsense-account': 'ca-pub-6676209672905473',
   },
