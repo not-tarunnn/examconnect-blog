@@ -61,6 +61,16 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+
+         {/* Monetag */}
+  <Script
+    src="https://quge5.com/88/tag.min.js"
+    strategy="afterInteractive"
+    data-zone="243237"
+    data-cfasync="false"
+    async
+  />
+  
       </body>
     </html>
   )
