@@ -18,11 +18,12 @@ export const metadata: Metadata = {
   description:
     'JEE, NEET & UPSC preparation platform with notes, exam updates, PYQs, strategy guides and daily practice.',
 
-  other: {
-    'google-adsense-account': 'ca-pub-6676209672905473',
-  },
+ other: {
+  'google-adsense-account': 'ca-pub-6676209672905473',
+  
+  monetag: 'da7c408e72efd54a126d9fdd2035b3f5',
+},
 };
-
 export default function RootLayout({
   children,
 }: {
