@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 import {ImageIcon} from '@sanity/icons'
 
 /**
@@ -71,6 +71,80 @@ export const blockContentType = defineType({
           title: 'Alternative Text',
         }
       ]
+    }),
+    defineArrayMember({
+      type: 'object',
+      name: 'table',
+      title: 'Table',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Table Title',
+          type: 'string',
+          description: 'Optional title for the table',
+        }),
+        defineField({
+          name: 'rows',
+          title: 'Rows',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'object',
+              name: 'tableRow',
+              title: 'Row',
+              fields: [
+                defineField({
+                  name: 'isHeaderRow',
+                  title: 'Is Header Row',
+                  type: 'boolean',
+                  initialValue: false,
+                  description: 'Check if this is a header row',
+                }),
+                defineField({
+                  name: 'cells',
+                  title: 'Row Data',
+                  type: 'array',
+                  of: [
+                    defineArrayMember({
+                      type: 'string',
+                      title: 'Cell',
+                    }),
+                  ],
+                  validation: (Rule) => Rule.required(),
+                }),
+              ],
+              preview: {
+                select: {
+                  cells: 'cells',
+                  isHeaderRow: 'isHeaderRow',
+                },
+                prepare(selection) {
+                  const {cells, isHeaderRow} = selection
+                  const cellText = cells?.slice(0, 2).join(' | ') || '(empty)'
+                  return {
+                    title: cellText,
+                    subtitle: isHeaderRow ? '📌 Header Row' : 'Data Row',
+                  }
+                },
+              },
+            }),
+          ],
+          validation: (Rule) => Rule.required().min(1),
+        }),
+      ],
+      preview: {
+        select: {
+          title: 'title',
+          rows: 'rows',
+        },
+        prepare(selection) {
+          const {title, rows} = selection
+          return {
+            title: title || 'Table',
+            subtitle: `${rows?.length || 0} rows`,
+          }
+        },
+      },
     }),
   ],
 })

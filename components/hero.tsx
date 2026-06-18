@@ -3,7 +3,7 @@ import AnimatedGradientText from '@/components/animated-gradient-text'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-16 pt-20">
       <div className="mx-auto max-w-7xl px-4 text-center">
         <div className="mb-6 inline-flex rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm text-primary">
           India's Modern Student Platform

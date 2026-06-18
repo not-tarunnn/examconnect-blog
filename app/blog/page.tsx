@@ -15,6 +15,7 @@ type Post = {
     title: string
   }
   mainImage?: any
+  isLive?: boolean
 }
 
 async function getPosts(): Promise<Post[]> {
@@ -28,7 +29,8 @@ async function getPosts(): Promise<Post[]> {
       "category": categories[0]->{
         title
       },
-      mainImage
+      mainImage,
+      isLive
     }`
   )
 }
@@ -38,7 +40,7 @@ export default async function BlogPage() {
 
   return (
     <main>
-      <section className="mx-auto max-w-7xl px-4 py-20">
+      <section className="mx-auto max-w-7xl px-4 py-20 pt-40">
         <div className="mb-10">
           <h1 className="text-4xl font-bold">Blog</h1>
 
@@ -67,11 +69,19 @@ export default async function BlogPage() {
                 )}
 
                 <div className="p-6">
-                  {post.category && (
-                    <div className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
-                      {post.category.title}
-                    </div>
-                  )}
+                  <div className="mb-3 flex flex-wrap gap-2 items-center">
+                    {post.isLive && (
+                      <div className="inline-flex items-center gap-2 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                        <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                        LIVE
+                      </div>
+                    )}
+                    {post.category && (
+                      <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
+                        {post.category.title}
+                      </div>
+                    )}
+                  </div>
 
                   <h3 className="text-2xl font-bold">
                     {post.title}

@@ -58,14 +58,14 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="border-t border-border py-16">
+    <footer className="bg-black dark:bg-gray-900 text-white rounded-t-[10%] border-t border-border py-16 mt-12">
       <div className="mx-auto max-w-7xl px-4">
         {/* 3 Column Layout */}
         <div className="grid gap-8 md:gap-12 md:grid-cols-3 mb-12">
           {/* Column 1: ExamConnect & Social Links */}
           <div>
-            <h2 className="text-2xl font-bold">ExamConnect</h2>
-            <p className="mt-2 text-muted-foreground">
+            <h2 className="text-2xl font-bold text-white">ExamConnect</h2>
+            <p className="mt-2 text-gray-300">
               Helping aspirants crack India's toughest exams with smart preparation tools.
             </p>
 
@@ -78,9 +78,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`rounded-full border border-border bg-muted p-3 transition-all duration-300 hover:bg-primary/10 hover:border-primary ${color}`}
+                  className={`rounded-full border border-gray-700 bg-gray-800 p-3 transition-all duration-300 hover:bg-gray-700 hover:border-gray-600`}
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-5 w-5 text-gray-400 hover:text-gray-200" />
                 </a>
               ))}
             </div>
@@ -88,13 +88,13 @@ export default function Footer() {
 
           {/* Column 2: Links & Contact */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Legal</h3>
+            <h3 className="font-bold text-lg mb-6 text-white">Legal</h3>
             <ul className="space-y-3 mb-8">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors hover:underline"
+                    className="text-gray-400 hover:text-white hover:bg-blue-900/40 px-2 py-1 rounded transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -102,18 +102,18 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h3 className="font-bold text-lg mb-4">Contact</h3>
+            <h3 className="font-bold text-lg mb-4 text-white">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-start gap-2">
-                <MdMail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                <MdMail className="h-5 w-5 text-gray-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-xs text-muted-foreground mb-1">Email</p>
-                  <a href="mailto:helpexamconnect@gmail.com" className="text-foreground hover:text-primary transition-colors text-sm">
+                  <p className="text-xs text-gray-400 mb-1">Email</p>
+                  <a href="mailto:helpexamconnect@gmail.com" className="text-gray-300 hover:text-white hover:bg-blue-900/40 px-2 py-1 rounded transition-colors text-sm inline-block">
                     helpexamconnect@gmail.com
                   </a>
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-xs text-gray-400 mt-4">
                 JEE • NEET • UPSC Preparation Platform
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
           <div>© 2026 ExamConnect. All rights reserved.</div>
           <div className="text-xs">Made with ❤️ for aspirants</div>
         </div>

@@ -50,6 +50,57 @@ export const postType = defineType({
       name: 'body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'isLive',
+      type: 'boolean',
+      title: 'Is Live',
+      description: 'Toggle to mark this post as live',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'timeline',
+      type: 'array',
+      title: 'Timeline of Events',
+      description: 'Add key events and dates related to this article',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          title: 'Timeline Event',
+          fields: [
+            defineField({
+              name: 'date',
+              type: 'string',
+              title: 'Date',
+              description: 'e.g., "January 15, 2024" or "15 Jan"',
+            }),
+            defineField({
+              name: 'title',
+              type: 'string',
+              title: 'Event Title',
+            }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              title: 'Event Description',
+              rows: 3,
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              date: 'date',
+            },
+            prepare(selection) {
+              const {title, date} = selection
+              return {
+                title: title,
+                subtitle: date,
+              }
+            },
+          },
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

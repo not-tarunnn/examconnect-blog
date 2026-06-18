@@ -14,6 +14,7 @@ async function getPosts() {
     publishedAt,
     "category": categories[0]->{ title },
     mainImage,
+    isLive,
   }`)
 }
 
@@ -46,11 +47,19 @@ export default async function HomePage() {
               </div>
 
               <div className="p-6">
-                {post.category && (
-                  <div className="mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
-                    {post.category.title}
-                  </div>
-                )}
+                <div className="mb-3 flex flex-wrap gap-2 items-center">
+                  {post.isLive && (
+                    <div className="inline-flex items-center gap-2 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                      LIVE
+                    </div>
+                  )}
+                  {post.category && (
+                    <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm text-primary">
+                      {post.category.title}
+                    </div>
+                  )}
+                </div>
 
                 <h3 className="text-2xl font-bold">{post.title}</h3>
 
